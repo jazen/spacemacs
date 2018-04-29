@@ -27,8 +27,8 @@
               (message (one-or-more not-newline)
                        (zero-or-more "\n" (any " ") (one-or-more not-newline)))
               line-end))
-    :predicate prose-proselint-enabled-p)
-    ;; :modes (text-mode markdown-mode gfm-mode))
+    :predicate prose-proselint-enabled-p
+    :modes (text-mode markdown-mode gfm-mode))
 
   (add-to-list 'flycheck-checkers 'proselint)
 
@@ -41,15 +41,15 @@
       (unless (eq checker 'proselint)
         (flycheck-add-next-checker 'proselint (cons t checker) t))))
 
-  (add-hook 'flycheck-before-syntax-check-hook 'prose-reset-proselint-next-checkers)
+  ;; (add-hook 'flycheck-before-syntax-check-hook 'prose-reset-proselint-next-checkers)
 
   (spacemacs|add-toggle flycheck-proselint
     :status prose-proselint-enabled
     :on (progn
           (setq prose-proselint-enabled t)
           (if (not flycheck-mode)
-            (flycheck-mode 1)
-          (flycheck-buffer)))
+              (flycheck-mode 1)
+            (flycheck-buffer)))
     :off (progn
            (setq prose-proselint-enabled nil)
            (flycheck-buffer))
