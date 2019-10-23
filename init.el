@@ -1,3 +1,6 @@
+;; https://github.com/bbatsov/prelude/issues/1225#issuecomment-511266025
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;;; init.el --- Spacemacs Initialization File
 ;;
 ;; Copyright (c) 2012-2018 Sylvain Benner & Contributors
